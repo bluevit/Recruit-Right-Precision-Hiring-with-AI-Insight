@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  .dashboard-container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+  }
+
+  .sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0;
+    border-bottom: 1px solid #34495e;
+    margin-bottom: 1rem;
+  }
+
+  .profile-preview {
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #34495e;
+    margin-bottom: 1rem;
+  }
+
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 0.5rem;
+    background: #34495e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+  }
+
+  .sidebar-menu li {
+    margin: 0.5rem 0;
+  }
+
+  .sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+  }
+
+  .sidebar-menu a:hover {
+    background: #34495e;
+  }
+
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+    background: #f5f6fa;
+  }
+
+  /* Profile Form */
+  .profile-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #7f8c8d;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  .form-group textarea {
+    height: 100px;
+    resize: vertical;
+  }
+
+  /* Calendar */
+  .availability-calendar {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .calendar-day {
+    aspect-ratio: 1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .calendar-day:hover {
+    background: #f0f0f0;
+  }
+
+  .calendar-day.selected {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+  }
+
+  /* Notifications */
+  .notifications {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .notification-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+
+  .notification-time {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    background: #3498db;
+    color: white;
+  }
+
+  .btn-secondary {
+    background: #95a5a6;
+    color: white;
+  }

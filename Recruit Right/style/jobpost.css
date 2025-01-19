@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  .dashboard-container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar styles from previous pages */
+  .sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+  }
+
+  .sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0;
+    border-bottom: 1px solid #34495e;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+  }
+
+  .sidebar-menu li {
+    margin: 0.5rem 0;
+  }
+
+  .sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+  }
+
+  .sidebar-menu a:hover {
+    background: #34495e;
+  }
+
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+    background: #f5f6fa;
+  }
+
+  /* Job Form */
+  .job-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #7f8c8d;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  .form-group textarea {
+    height: 150px;
+    resize: vertical;
+  }
+
+  /* Tags Input */
+  .tags-input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.5rem;
+    min-height: 44px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin: 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  .tag .remove {
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  /* Job Listings */
+  .job-listings {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .job-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .job-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .job-table th,
+  .job-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  .job-table th {
+    font-weight: bold;
+    color: #7f8c8d;
+  }
+
+  /* Status Tags */
+  .status-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+
+  .status-active {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .status-draft {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  .status-expired {
+    background: #f8d7da;
+    color: #721c24;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    background: #3498db;
+    color: white;
+  }
+
+  .btn-secondary {
+    background: #95a5a6;
+    color: white;
+  }
+
+  .btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  /* Search Bar */
+  .search-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .search-bar input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }

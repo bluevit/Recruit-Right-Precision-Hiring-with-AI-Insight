@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  .dashboard-container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar styles (same as previous) */
+  .sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+  }
+
+  .sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0;
+    border-bottom: 1px solid #34495e;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+  }
+
+  .sidebar-menu li {
+    margin: 0.5rem 0;
+  }
+
+  .sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+  }
+
+  .sidebar-menu a:hover {
+    background: #34495e;
+  }
+
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+    background: #f5f6fa;
+    overflow-y: auto;
+  }
+
+  .assessment-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+  }
+
+  .rating-group {
+    margin: 1rem 0;
+  }
+
+  .rating-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+  }
+
+  .rating-scale {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .rating-option {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .rating-option.selected {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+  }
+
+  .notes-section {
+    margin-top: 1rem;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    resize: vertical;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+
+  .btn-primary {
+    background: #3498db;
+    color: white;
+  }
+  .btn-success {
+    background: #27ae60;
+    color: white;
+  }
+  .btn-danger {
+    background: #e74c3c;
+    color: white;
+  }
+
+  .feedback-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .tag {
+    padding: 0.5rem 1rem;
+    background: #eee;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .tag.selected {
+    background: #3498db;
+    color: white;
+  }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/org-dash.css">
+    <title>Organization Dashboard - Recruiter Right</title>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="sidebar-logo">Recruiter Right</div>
+        <ul class="sidebar-menu">
+          <li><a href="org-dash.html" class="active">Dashboard</a></li>
+          <li><a href="#Profile" class="active">Profile </a></li>
+          <li><a href="jobpost.html">Job Listings</a></li>
+          <li><a href="resumereview.html">Resumes</a></li>
+          <li><a href="report-pg.html">Reports</a></li>
+          <li><a href="#notification">Notification</a></li>
+          <li><a href="javascript:handleLogout()">Logout</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <h1>Dashboard</h1>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Active Job Postings</h3>
+            <div class="number">12</div>
+          </div>
+          <div class="stat-card">
+            <h3>Resumes Under Review</h3>
+            <div class="number">48</div>
+          </div>
+          <div class="stat-card">
+            <h3>Pending Interviews</h3>
+            <div class="number">8</div>
+          </div>
+          <div class="stat-card">
+            <h3>Total Applications</h3>
+            <div class="number">156</div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <h2>Quick Actions</h2>
+          <div class="action-buttons">
+            <button class="btn btn-primary" onclick="showNewJobModal()">
+              Add New Job
+            </button>
+            <button class="btn btn-secondary" onclick="showUploadResumeModal()">
+              Upload Resumes
+            </button>
+          </div>
+        </div>
+
+        <div class="jobs-table">
+          <h2>Recent Job Postings</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Job Title</th>
+                <th>Posted Date</th>
+                <th>Applicants</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Senior Frontend Developer</td>
+                <td>Jan 10, 2025</td>
+                <td>24</td>
+                <td><span class="status-tag status-open">Open</span></td>
+                <td>
+                  <button class="btn btn-secondary" onclick="editJob(1)">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Product Manager</td>
+                <td>Jan 8, 2025</td>
+                <td>18</td>
+                <td><span class="status-tag status-open">Open</span></td>
+                <td>
+                  <button class="btn btn-secondary" onclick="editJob(2)">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>UX Designer</td>
+                <td>Jan 5, 2025</td>
+                <td>32</td>
+                <td><span class="status-tag status-closed">Closed</span></td>
+                <td>
+                  <button class="btn btn-secondary" onclick="editJob(3)">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      function showNewJobModal() {
+        alert("New Job posting modal will be implemented here");
+      }
+
+      function showUploadResumeModal() {
+        alert("Resume upload modal will be implemented here");
+      }
+
+      function editJob(id) {
+        alert(`Edit job ${id} functionality will be implemented here`);
+      }
+
+      function handleLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+          window.location.href = "index.html";
+        }
+      }
+    </script>
+  </body>
+</html>
