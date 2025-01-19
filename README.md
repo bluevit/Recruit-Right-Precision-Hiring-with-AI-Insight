@@ -26,3 +26,17 @@ This project is developed as part of our final year project for Dept. of Computi
 ## Future Enhancements
 The platform's modular design allows for future additions, such as AI-powered interview feedback, multilingual support, and integration with proprietary HR systems.
 
+## Project Team
+
+Group Members:
+
+Member 1: Muhammad Naeemuddin/1955-2021
+
+Member 2: Muhammad Abdullah/2206-2021
+
+Member 3: Muhammad Raza/2207-2021
+
+Project Supervisor: Dr. Umer Farooq
+
+Project Code: FYP-029/FL24
+
