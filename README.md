@@ -5,8 +5,6 @@
 ## Overview
 The RecruitRight is designed to streamline and optimize the hiring process. It leverages advanced Natural Language Processing (NLP) tools to filter candidates based on job descriptions and provides an end-to-end solution for managing job postings, candidates, and interview sessions. The platform simplifies communication between organizations, candidates, and interview engineers.
 
-This project is developed as part of our final year project for Dept. of Computing, Faculty of Engineering, Science and Technology, Hamdard University, Karachi.
-
 ## Key Features
 - **Organization Management**: Organizations can create accounts, post job details, and upload resumes for evaluation.
 - **NER-Enabled Resume Screening**: A Natural Entity Recognition (NER) tool scans resumes and matches them with job descriptions for efficient filtering.
