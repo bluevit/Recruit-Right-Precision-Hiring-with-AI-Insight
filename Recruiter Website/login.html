@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/login.css" />
+    <title>Login - Recruit Right</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="logo-container">
+        <img
+          src="/api/placeholder/60/60"
+          alt="Recruiter Right Logo"
+          class="logo-img"
+        />
+        <div class="logo">Recruit Right</div>
+      </div>
+      <h1 class="heading">Welcome back</h1>
+
+      <div class="social-buttons">
+        <button class="social-btn google">
+          <i class="fab fa-google"></i>
+          Continue with Google
+        </button>
+        <button class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i>
+          Continue with LinkedIn
+        </button>
+      </div>
+
+      <div class="divider">or</div>
+
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div class="auth-links">
+          <a href="signup.html">Don't have an account? Sign up</a>
+          <a href="#">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function handleLogin(event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (email && password) {
+          window.location.href = "dashboard.html";
+        } else {
+          alert("Please fill in all fields");
+        }
+      }
+    </script>
+  </body>
+</html>

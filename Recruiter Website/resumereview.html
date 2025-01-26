@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/resumereview.css" />
+    <title>Resume Review - Recruit Right</title>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="sidebar-logo"><a href="index.html">Recruit Right</a></div>
+        <ul class="sidebar-menu">
+          <li><a href="#dashboard" class="active">Dashboard</a></li>
+          <!-- <li><a href="#Profile" class="active">Profile </a></li> -->
+          <!-- <li><a href="#job-listings">Job Listings</a></li> -->
+          <!-- <li><a href="#resumes">Resumes</a></li> -->
+          <!-- <li><a href="#reports">Reports</a></li> -->
+          <!-- <li><a href="#reports">Notification</a></li> -->
+          <li><a href="javascript:handleLogout()">Logout</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <div class="upload-area" onclick="triggerFileUpload()">
+          <h3>Drop Resumes Here</h3>
+          <p>or click to upload</p>
+          <input
+            type="file"
+            id="resumeUpload"
+            style="display: none"
+            multiple
+            accept=".pdf,.doc,.docx"
+          />
+          <div class="progress-bar" style="display: none">
+            <div class="progress" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="bulk-actions">
+          <div>
+            <button class="btn btn-secondary" onclick="toggleSelectAll()">
+              Select All
+            </button>
+            <button class="btn btn-success" onclick="bulkAccept()">
+              Accept Selected
+            </button>
+            <button class="btn btn-danger" onclick="bulkReject()">
+              Reject Selected
+            </button>
+          </div>
+          <div>
+            <span>Selected: <span id="selectedCount">0</span></span>
+          </div>
+        </div>
+
+        <div class="filters">
+          <h3>Filters</h3>
+          <div class="filter-grid">
+            <select onchange="filterResumes()">
+              <option value="">Job Position</option>
+              <option>Frontend Developer</option>
+              <option>Backend Developer</option>
+              <option>UI/UX Designer</option>
+            </select>
+            <select onchange="filterResumes()">
+              <option value="">Match Score</option>
+              <option>High Match (90%+)</option>
+              <option>Medium Match (70-89%)</option>
+              <option>Low Match (<70%)</option>
+            </select>
+            <select onchange="filterResumes()">
+              <option value="">Status</option>
+              <option>Under Review</option>
+              <option>Shortlisted</option>
+              <option>Rejected</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Search by skill..."
+              onkeyup="searchSkills()"
+            />
+          </div>
+        </div>
+
+        <div class="resume-grid">
+          <div class="resume-card">
+            <input
+              type="checkbox"
+              style="float: right"
+              onchange="updateSelectedCount()"
+            />
+            <div class="match-score high-match">95% Match</div>
+            <h3>John Doe</h3>
+            <p>Frontend Developer Position</p>
+            <div class="skills-list">
+              <span class="skill-tag matching-skill">React</span>
+              <span class="skill-tag matching-skill">JavaScript</span>
+              <span class="skill-tag matching-skill">TypeScript</span>
+              <span class="skill-tag">Vue.js</span>
+            </div>
+            <p>5 years of experience</p>
+            <div style="margin-top: 1rem">
+              <button class="btn btn-primary" onclick="viewResume(1)">
+                View
+              </button>
+              <button class="btn btn-success" onclick="acceptCandidate(1)">
+                Accept
+              </button>
+              <button class="btn btn-danger" onclick="rejectCandidate(1)">
+                Reject
+              </button>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <input
+              type="checkbox"
+              style="float: right"
+              onchange="updateSelectedCount()"
+            />
+            <div class="match-score medium-match">85% Match</div>
+            <h3>Jane Smith</h3>
+            <p>Frontend Developer Position</p>
+            <div class="skills-list">
+              <span class="skill-tag matching-skill">React</span>
+              <span class="skill-tag matching-skill">JavaScript</span>
+              <span class="skill-tag">Angular</span>
+              <span class="skill-tag">Node.js</span>
+            </div>
+            <p>3 years of experience</p>
+            <div style="margin-top: 1rem">
+              <button class="btn btn-primary" onclick="viewResume(2)">
+                View
+              </button>
+              <button class="btn btn-success" onclick="acceptCandidate(2)">
+                Accept
+              </button>
+              <button class="btn btn-danger" onclick="rejectCandidate(2)">
+                Reject
+              </button>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <input
+              type="checkbox"
+              style="float: right"
+              onchange="updateSelectedCount()"
+            />
+            <div class="match-score low-match">65% Match</div>
+            <h3>Mike Johnson</h3>
+            <p>Frontend Developer Position</p>
+            <div class="skills-list">
+              <span class="skill-tag matching-skill">JavaScript</span>
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">jQuery</span>
+              <span class="skill-tag">MySQL</span>
+            </div>
+            <p>2 years of experience</p>
+            <div style="margin-top: 1rem">
+              <button class="btn btn-primary" onclick="viewResume(3)">
+                View
+              </button>
+              <button class="btn btn-success" onclick="acceptCandidate(3)">
+                Accept
+              </button>
+              <button class="btn btn-danger" onclick="rejectCandidate(3)">
+                Reject
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      let selectedCount = 0;
+
+      function triggerFileUpload() {
+        document.getElementById("resumeUpload").click();
+      }
+
+      function updateSelectedCount() {
+        selectedCount = document.querySelectorAll(
+          'input[type="checkbox"]:checked'
+        ).length;
+        document.getElementById("selectedCount").textContent = selectedCount;
+      }
+
+      function toggleSelectAll() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const newState = selectedCount < checkboxes.length;
+        checkboxes.forEach((checkbox) => (checkbox.checked = newState));
+        updateSelectedCount();
+      }
+
+      function filterResumes() {
+        alert("Resume filtering will be implemented here");
+      }
+
+      function searchSkills() {
+        alert("Skill search will be implemented here");
+      }
+
+      function viewResume(id) {
+        alert(`Viewing resume ${id}`);
+      }
+
+      function acceptCandidate(id) {
+        alert(`Accepting candidate ${id}`);
+      }
+
+      function rejectCandidate(id) {
+        alert(`Rejecting candidate ${id}`);
+      }
+
+      function bulkAccept() {
+        alert(`Accepting ${selectedCount} candidates`);
+      }
+
+      function bulkReject() {
+        alert(`Rejecting ${selectedCount} candidates`);
+      }
+
+      function handleLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+          window.location.href = "index.html";
+        }
+      }
+
+      // File upload simulation
+      document
+        .getElementById("resumeUpload")
+        .addEventListener("change", function (e) {
+          const progressBar = document.querySelector(".progress-bar");
+          const progress = document.querySelector(".progress");
+
+          if (e.target.files.length > 0) {
+            progressBar.style.display = "block";
+            let width = 0;
+            const interval = setInterval(() => {
+              if (width >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                  progressBar.style.display = "none";
+                  alert("Upload complete!");
+                }, 500);
+              } else {
+                width += 5;
+                progress.style.width = width + "%";
+              }
+            }, 100);
+          }
+        });
+    </script>
+  </body>
+</html>

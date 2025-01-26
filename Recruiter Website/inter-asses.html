@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/inter-asses.css" />
+    <title>Interview Assessment - Recruit Right</title>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="sidebar-logo"><a href="index.html">Recruit Right</a></div>
+        <ul class="sidebar-menu">
+          <li><a href="interviewer-dash.html" class="active">Dashboard</a></li>
+          <!-- <li><a href="#profile">Profile</a></li> -->
+          <!-- <li><a href="#schedule">Schedule</a></li> -->
+          <!-- <li><a href="#assessments">Assessments</a></li> -->
+          <!-- <li><a href="#reports">Reports</a></li> -->
+          <!-- <li><a href="#notifications">Notifications</a></li> -->
+          <li><a href="javascript:handleLogout()">Logout</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <!-- Interview Info Section -->
+        <div class="assessment-section">
+          <div class="timer" id="interview-timer">Time Remaining: 45:00</div>
+          <h2>Interview Assessment - John Doe</h2>
+          <p>Position: Frontend Developer</p>
+          <p>Date: January 15, 2025</p>
+          <p>Interview Stage: Technical Round</p>
+        </div>
+
+        <!-- Assessment Form -->
+        <form onsubmit="handleSubmitAssessment(event)">
+          <!-- Technical Skills -->
+          <div class="assessment-section">
+            <h3>Technical Skills Assessment</h3>
+
+            <div class="rating-group">
+              <div class="rating-item">
+                <label>JavaScript Proficiency</label>
+                <div class="rating-scale">
+                  <div class="rating-option" onclick="selectRating(this)">
+                    1
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    2
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    3
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    4
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    5
+                  </div>
+                </div>
+                <textarea
+                  placeholder="Add notes about JavaScript skills..."
+                ></textarea>
+              </div>
+
+              <div class="rating-item">
+                <label>Problem Solving</label>
+                <div class="rating-scale">
+                  <div class="rating-option" onclick="selectRating(this)">
+                    1
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    2
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    3
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    4
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    5
+                  </div>
+                </div>
+                <textarea
+                  placeholder="Add notes about problem-solving approach..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="assessment-section">
+            <h3>Soft Skills Assessment</h3>
+
+            <div class="rating-group">
+              <div class="rating-item">
+                <label>Communication</label>
+                <div class="rating-scale">
+                  <div class="rating-option" onclick="selectRating(this)">
+                    1
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    2
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    3
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    4
+                  </div>
+                  <div class="rating-option" onclick="selectRating(this)">
+                    5
+                  </div>
+                </div>
+                <textarea
+                  placeholder="Add notes about communication skills..."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="feedback-tags">
+              <div class="tag" onclick="toggleTag(this)">Team Player</div>
+              <div class="tag" onclick="toggleTag(this)">
+                Leadership Potential
+              </div>
+              <div class="tag" onclick="toggleTag(this)">Problem Solver</div>
+              <div class="tag" onclick="toggleTag(this)">Quick Learner</div>
+              <div class="tag" onclick="toggleTag(this)">Creative Thinker</div>
+            </div>
+          </div>
+
+          <!-- Overall Assessment -->
+          <div class="assessment-section">
+            <h3>Overall Assessment</h3>
+            <textarea
+              placeholder="Add your overall assessment and final recommendations..."
+            ></textarea>
+
+            <div style="margin-top: 1rem">
+              <button type="submit" class="btn btn-success">
+                Submit Assessment
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                onclick="endInterview()"
+              >
+                End Interview
+              </button>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <script>
+      let timeLeft = 45 * 60; // 45 minutes in seconds
+
+      function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById(
+          "interview-timer"
+        ).textContent = `Time Remaining: ${minutes}:${seconds
+          .toString()
+          .padStart(2, "0")}`;
+
+        if (timeLeft > 0) {
+          timeLeft--;
+          setTimeout(updateTimer, 1000);
+        } else {
+          alert("Interview time is up!");
+        }
+      }
+
+      function selectRating(element) {
+        // Remove selected class from siblings
+        const siblings = element.parentElement.children;
+        for (let sibling of siblings) {
+          sibling.classList.remove("selected");
+        }
+        element.classList.add("selected");
+      }
+
+      function toggleTag(element) {
+        element.classList.toggle("selected");
+      }
+
+      function handleSubmitAssessment(event) {
+        event.preventDefault();
+        if (confirm("Are you sure you want to submit this assessment?")) {
+          alert("Assessment submitted successfully!");
+          window.location.href = "interviews.html";
+        }
+      }
+
+      function endInterview() {
+        if (confirm("Are you sure you want to end this interview?")) {
+          window.location.href = "interviews.html";
+        }
+      }
+
+      // Start the timer when page loads
+      updateTimer();
+    </script>
+  </body>
+</html>

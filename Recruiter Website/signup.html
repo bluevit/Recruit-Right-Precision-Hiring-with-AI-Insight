@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/signup.css" />
+    <title>Sign Up - Recruit Right</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="logo-container">
+        <img
+          src="/api/placeholder/60/60"
+          alt="Recruiter Right Logo"
+          class="logo-img"
+        />
+        <div class="logo">Recruit Right</div>
+      </div>
+      <h1 class="heading">Create your account</h1>
+
+      <div class="social-buttons">
+        <button class="social-btn google">
+          <i class="fab fa-google"></i>
+          Continue with Google
+        </button>
+        <button class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i>
+          Continue with LinkedIn
+        </button>
+      </div>
+
+      <div class="divider">or</div>
+
+      <form onsubmit="handleSignup(event)">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" id="company" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required />
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" required />
+        </div>
+
+        <div class="radio-group">
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="organization"
+              name="user-type"
+              value="organization"
+              required
+            />
+            <label for="organization">Organization</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="candidate"
+              name="user-type"
+              value="candidate"
+            />
+            <label for="candidate">Candidate</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="interviewer"
+              name="user-type"
+              value="interviewer"
+            />
+            <label for="interviewer">Interviewer</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Sign Up</button>
+        <div class="auth-links">
+          <a href="login.html">Already have an account? Login</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function handleSignup(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        const company = document.getElementById("company").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirm-password").value;
+        const userType = document.querySelector(
+          'input[name="user-type"]:checked'
+        );
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match");
+          return;
+        }
+
+        if (name && company && email && password && userType) {
+          window.location.href = "login.html";
+        } else {
+          alert("Please fill in all fields");
+        }
+      }
+    </script>
+  </body>
+</html>
