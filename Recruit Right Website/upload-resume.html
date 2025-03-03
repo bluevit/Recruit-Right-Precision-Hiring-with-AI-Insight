@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/index.css" />
+    <title>Upload Resume - Recruit Right</title>
+    <style>
+      .upload-container {
+        max-width: 800px;
+        margin: 4rem auto;
+        padding: 2rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .upload-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .upload-area {
+        border: 2px dashed #3498db;
+        border-radius: 8px;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .upload-area:hover {
+        background-color: rgba(52, 152, 219, 0.05);
+      }
+
+      .upload-area p {
+        margin: 1rem 0;
+        color: #555;
+      }
+
+      .requirements {
+        background-color: #f5f5f5;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .requirements ul {
+        padding-left: 1.5rem;
+      }
+
+      .requirements li {
+        margin-bottom: 0.5rem;
+      }
+
+      .preview-container {
+        display: none;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .preview-actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .preview-frame {
+        width: 100%;
+        height: 400px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .message {
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        display: none;
+      }
+
+      .success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+      }
+
+      .progress-indicator {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .progress-step {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e9ecef;
+        color: #6c757d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        font-weight: bold;
+        position: relative;
+      }
+
+      .progress-step.active {
+        background-color: #3498db;
+        color: white;
+      }
+
+      .progress-step:not(:last-child):after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        background-color: #e9ecef;
+        top: 14px;
+        left: 30px;
+        z-index: -1;
+      }
+
+      .progress-step.active:not(:last-child):after {
+        background-color: #3498db;
+      }
+
+      .hidden-input {
+        display: none;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn-secondary {
+        background: #6c757d;
+        color: white;
+      }
+
+      .btn-danger {
+        background: #dc3545;
+        color: white;
+      }
+
+      .file-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+      }
+
+      .file-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #f1f1f1;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-links">
+        <div class="logo"><a href="index.html">Recruit Right</a></div>
+        <div class="nav-items">
+          <a href="cand-dash.html">Home</a>
+          <!-- <a href="#">About</a>
+        <a href="#How it works">How it works</a>
+        <a href="#contact">Contact</a>
+        <a href="signup.html">Signup</a> -->
+        </div>
+      </div>
+    </nav>
+
+    <main class="upload-container">
+      <div class="progress-indicator">
+        <div class="progress-step active">1</div>
+        <div class="progress-step active">2</div>
+        <div class="progress-step">3</div>
+        <div class="progress-step">4</div>
+      </div>
+
+      <div class="upload-header">
+        <h1>Upload Your Resume</h1>
+        <p>Submit your resume to apply for jobs and schedule interviews</p>
+      </div>
+
+      <div id="successMessage" class="message success">
+        Resume successfully uploaded! Your profile has been updated.
+      </div>
+
+      <div id="errorMessage" class="message error">
+        Error uploading file. Please check the file format and size.
+      </div>
+
+      <div class="requirements">
+        <h3>Resume Requirements:</h3>
+        <ul>
+          <li>Accepted formats: PDF, DOC, or DOCX</li>
+          <li>Maximum file size: 5MB</li>
+          <li>Make sure your contact information is up-to-date</li>
+          <li>Include relevant skills and experience for better matching</li>
+        </ul>
+      </div>
+
+      <div id="uploadArea" class="upload-area" onclick="triggerFileInput()">
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#3498db"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <h3>Drag & Drop Your Resume Here</h3>
+        <p>Or click to browse files</p>
+        <p>PDF, DOC, or DOCX (Max 5MB)</p>
+      </div>
+
+      <input
+        type="file"
+        id="resumeUpload"
+        class="hidden-input"
+        accept=".pdf,.doc,.docx"
+        onchange="handleFileUpload(event)"
+      />
+
+      <div id="previewContainer" class="preview-container">
+        <div class="preview-header">
+          <div class="file-info">
+            <div class="file-icon" id="fileIcon">PDF</div>
+            <div>
+              <div id="fileName">resume.pdf</div>
+              <div id="fileSize">1.2 MB</div>
+            </div>
+          </div>
+          <div class="preview-actions">
+            <button class="btn btn-danger" onclick="removeFile()">
+              Remove
+            </button>
+            <button class="btn btn-secondary" onclick="triggerFileInput()">
+              Replace
+            </button>
+          </div>
+        </div>
+
+        <div class="preview-frame" id="previewFrame">
+          <p>Resume preview not available. Click Submit to upload.</p>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button
+          class="btn btn-secondary"
+          onclick="window.location.href='cand-dash.html'"
+        >
+          Back to Dashboard
+        </button>
+        <button class="btn btn-primary" onclick="submitResume()">
+          Submit Resume
+        </button>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div>
+          <h3>Quick Links</h3>
+          <p><a href="#About">About</a></p>
+          <p><a href="#How it works">How it works</a></p>
+          <p><a href="#contact">Contact</a></p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p>Email: contact@RecruitRight.com</p>
+          <p>Phone: (555) 123-4567</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let currentFile = null;
+
+      function triggerFileInput() {
+        document.getElementById("resumeUpload").click();
+      }
+
+      function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Check file type
+        const allowedTypes = [
+          "application/pdf",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ];
+        if (!allowedTypes.includes(file.type)) {
+          showError("Please upload a PDF, DOC, or DOCX file.");
+          return;
+        }
+
+        // Check file size (5MB maximum)
+        if (file.size > 5 * 1024 * 1024) {
+          showError(
+            "File size exceeds 5MB limit. Please upload a smaller file."
+          );
+          return;
+        }
+
+        currentFile = file;
+
+        // Update file information
+        document.getElementById("fileName").textContent = file.name;
+        document.getElementById("fileSize").textContent = formatFileSize(
+          file.size
+        );
+
+        // Set file icon type
+        const fileIcon = document.getElementById("fileIcon");
+        if (file.type === "application/pdf") {
+          fileIcon.textContent = "PDF";
+        } else if (
+          file.type === "application/msword" ||
+          file.type ===
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        ) {
+          fileIcon.textContent = "DOC";
+        }
+
+        // Show preview container
+        document.getElementById("previewContainer").style.display = "block";
+
+        // For PDF, we could potentially show a preview
+        if (file.type === "application/pdf") {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const previewFrame = document.getElementById("previewFrame");
+            previewFrame.innerHTML =
+              "<p>PDF preview is available but requires additional implementation.</p>";
+
+            // In a real implementation, you could use:
+            // previewFrame.innerHTML = `<embed src="${e.target.result}" type="application/pdf" width="100%" height="100%">`;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          document.getElementById("previewFrame").innerHTML =
+            "<p>Preview not available for DOC/DOCX files.</p>";
+        }
+
+        // Hide any previous error messages
+        hideMessages();
+      }
+
+      function formatFileSize(bytes) {
+        if (bytes < 1024) {
+          return bytes + " bytes";
+        } else if (bytes < 1024 * 1024) {
+          return (bytes / 1024).toFixed(1) + " KB";
+        } else {
+          return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+        }
+      }
+
+      function removeFile() {
+        currentFile = null;
+        document.getElementById("resumeUpload").value = "";
+        document.getElementById("previewContainer").style.display = "none";
+      }
+
+      function submitResume() {
+        if (!currentFile) {
+          showError("Please select a resume file to upload.");
+          return;
+        }
+
+        // Simulate upload process
+        simulateUpload();
+      }
+
+      function simulateUpload() {
+        // In a real application, you would use fetch or XMLHttpRequest to upload the file
+
+        // Simulate processing time
+        setTimeout(() => {
+          // Show success message
+          showSuccess();
+
+          // In a real application, you might redirect after successful upload
+          // setTimeout(() => window.location.href = 'cand-dash.html', 2000);
+        }, 1500);
+      }
+
+      function showSuccess() {
+        const successMessage = document.getElementById("successMessage");
+        successMessage.style.display = "block";
+
+        // Hide error message if visible
+        document.getElementById("errorMessage").style.display = "none";
+
+        // Scroll to message
+        successMessage.scrollIntoView({ behavior: "smooth" });
+      }
+
+      function showError(message) {
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+
+        // Hide success message if visible
+        document.getElementById("successMessage").style.display = "none";
+
+        // Scroll to message
+        errorMessage.scrollIntoView({ behavior: "smooth" });
+      }
+
+      function hideMessages() {
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("errorMessage").style.display = "none";
+      }
+
+      // Allow drag and drop functionality
+      const uploadArea = document.getElementById("uploadArea");
+
+      uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.style.backgroundColor = "rgba(52, 152, 219, 0.1)";
+      });
+
+      uploadArea.addEventListener("dragleave", () => {
+        uploadArea.style.backgroundColor = "";
+      });
+
+      uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.style.backgroundColor = "";
+
+        if (e.dataTransfer.files.length) {
+          const fileInput = document.getElementById("resumeUpload");
+          fileInput.files = e.dataTransfer.files;
+
+          // Trigger the change event manually
+          const event = new Event("change", { bubbles: true });
+          fileInput.dispatchEvent(event);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style/index.css" />
+  <title>How It Works - Recruit Right</title>
+  <style>
+    .how-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .how-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .process-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    
+    .step-number {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #3498db;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .step-content {
+      border-left: 3px solid #3498db;
+      padding-left: 1.5rem;
+    }
+    
+    .step-content h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .workflow-diagram {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .user-roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .role-card {
+      padding: 2rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    
+    .role-card h3 {
+      color: #3498db;
+      margin-bottom: 1rem;
+    }
+    
+    .role-card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    .role-card li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .role-card li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #3498db;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <div class="logo"><a href="index.html">Recruit Right</a></div>
+      <div class="nav-items">
+        <a href="index.html">Home</a>
+        <a href="#About">About</a>
+        <a href="#How it works">How it works</a>
+        <a href="#contact">Contact</a>
+        <a href="signup.html">Signup</a>
+      </div>
+    </div>
+  </nav>
+  
+  <section id="How it works" class="how-section">
+    <div class="how-header">
+      <h1>How Recruit Right Works</h1>
+      <p>Our AI-powered platform streamlines every step of the recruitment process</p>
+    </div>
+    
+    <div class="process-timeline">
+      <div class="timeline-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Job Creation</h3>
+          <p>Organizations create job listings with detailed requirements, skills, and qualifications. Our AI analyzes these to create optimized matching criteria.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Resume Screening</h3>
+          <p>Upload candidate resumes to our platform, where our AI analyzes and ranks them based on job requirements, skills, and experience match.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Candidate Registration</h3>
+          <p>Candidates create profiles, upload resumes, and specify preferences. They can also practice with our AI-powered interview simulations.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Interview Scheduling</h3>
+          <p>Our platform automatically suggests interview times based on interviewer and candidate availability, streamlining the scheduling process.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Structured Interviews</h3>
+          <p>Interviewers use our guided framework to conduct fair and consistent interviews. The AI helps with question suggestions and evaluation criteria.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>Feedback & Evaluation</h3>
+          <p>After interviews, our platform collects structured feedback from interviewers and provides objective candidate evaluations.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="workflow-diagram">
+      <h3>Recruitment Workflow</h3>
+      <p>[Workflow diagram placeholder: Visual representation of the recruitment process from job posting to candidate selection]</p>
+    </div>
+    
+    <div class="user-roles">
+      <div class="role-card">
+        <h3>For Organizations</h3>
+        <ul>
+          <li>Post job listings with detailed requirements</li>
+          <li>Upload and screen resumes automatically</li>
+          <li>Schedule interviews efficiently</li>
+          <li>Receive structured candidate evaluations</li>
+          <li>Track recruitment metrics and KPIs</li>
+        </ul>
+      </div>
+      
+      <div class="role-card">
+        <h3>For Candidates</h3>
+        <ul>
+          <li>Create comprehensive profiles</li>
+          <li>Get matched with suitable positions</li>
+          <li>Practice with interview simulations</li>
+          <li>Schedule interviews conveniently</li>
+          <li>Receive constructive feedback</li>
+        </ul>
+      </div>
+      
+      <div class="role-card">
+        <h3>For Interviewers</h3>
+        <ul>
+          <li>Access structured interview frameworks</li>
+          <li>Receive AI-suggested questions</li>
+          <li>Use standardized evaluation criteria</li>
+          <li>Provide consistent candidate feedback</li>
+          <li>Collaborate with hiring teams</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h3>Quick Links</h3>
+        <p><a href="#About">About</a></p>
+        <p><a href="#How it works">How it works</a></p>
+        <p><a href="#contact">Contact</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>Email: contact@RecruitRight.com</p>
+        <p>Phone: (555) 123-4567</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

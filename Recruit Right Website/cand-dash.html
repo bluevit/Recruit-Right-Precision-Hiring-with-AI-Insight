@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/cand-dash.css" />
+    <title>Candidate Dashboard - Recruit Right</title>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="sidebar-logo"><a href="index.html">Recruit Right</a></div>
+        <div class="profile-preview">
+          <div class="profile-image">JD</div>
+          <div>My profile</div>
+        </div>
+        <ul class="sidebar-menu">
+          <li><a href="cand-dash.html" class="active">Dashboard</a></li>
+          <li><a href="cand-inter-sched.html">Schedule</a></li>
+          <li><a href="upload-resume.html">Resume Upload</a></li>
+          <!-- <li><a href="report-pg.html">Reports</a></li> -->
+          <li><a href="login.html">Logout</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <h1>Candidate Dashboard</h1>
+        <br />
+
+        <div class="profile-form">
+          <h2>Personal Information</h2>
+          <form onsubmit="handleProfileUpdate(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" value="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" value="john.doe@example.com" required />
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" value="+1 (555) 123-4567" />
+              </div>
+              <div class="form-group">
+                <label>Location</label>
+                <input type="text" value="New York, NY" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Professional Summary</label>
+              <textarea>
+Experienced software developer with 5 years of experience in full-stack development...</textarea
+              >
+            </div>
+
+            <div class="form-group">
+              <label>Skills</label>
+              <textarea>JavaScript, React, Node.js, Python, SQL, AWS</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+        
+        <!-- <div class="availability-calendar">
+          <h2>Availability</h2>
+          <p>Click to mark your available time slots for interviews</p>
+          <div class="calendar-grid"> -->
+            <!-- Sample week -->
+            <!-- <div class="calendar-day">Mon</div>
+            <div class="calendar-day selected">Tue</div>
+            <div class="calendar-day">Wed</div>
+            <div class="calendar-day selected">Thu</div>
+            <div class="calendar-day">Fri</div>
+            <div class="calendar-day">Sat</div>
+            <div class="calendar-day">Sun</div>
+          </div>
+        </div> -->
+      
+
+        <div class="notifications">
+          <h2>Recent Notifications</h2>
+          <div class="notification-item">
+            <div class="notification-time">2 hours ago</div>
+            <p>
+              Your application for Senior Frontend Developer has been reviewed
+            </p>
+          </div>
+          <div class="notification-item">
+            <div class="notification-time">1 day ago</div>
+            <p>Interview scheduled for Product Manager position</p>
+          </div>
+          <div class="notification-item">
+            <div class="notification-time">2 days ago</div>
+            <p>New job matching your profile: UX Designer at TechCorp</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      function handleProfileUpdate(event) {
+        event.preventDefault();
+        alert("Profile update functionality will be implemented here");
+      }
+
+      function handleLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+          window.location.href = "index.html";
+        }
+      }
+
+      // Calendar functionality
+      document.querySelectorAll(".calendar-day").forEach((day) => {
+        day.addEventListener("click", () => {
+          if (
+            day.innerText !== "Mon" &&
+            day.innerText !== "Tue" &&
+            day.innerText !== "Wed" &&
+            day.innerText !== "Thu" &&
+            day.innerText !== "Fri" &&
+            day.innerText !== "Sat" &&
+            day.innerText !== "Sun"
+          ) {
+            day.classList.toggle("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

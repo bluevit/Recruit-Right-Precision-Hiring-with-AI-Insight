@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Log in to your Recruit Right account to manage your recruiting process"
+    />
+    <title>Login - Recruit Right</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/login.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="logo-container">
+        <img
+          src="/api/placeholder/60/60"
+          alt="Recruit Right Logo"
+          class="logo-img"
+        />
+        <div class="logo">Recruit Right</div>
+      </div>
+
+      <h1 class="heading">Welcome back</h1>
+
+      <div class="social-buttons">
+        <button type="button" class="social-btn google">
+          <i class="fab fa-google"></i> Continue with Google
+        </button>
+        <button type="button" class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i> Continue with LinkedIn
+        </button>
+      </div>
+
+      <div class="divider">or continue with email</div>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required autocomplete="email" />
+          <div class="error-message">Please enter a valid email address</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            required
+            autocomplete="current-password"
+          />
+          <i class="fas fa-eye-slash password-toggle" id="password-toggle"></i>
+          <div class="error-message">Please enter your password</div>
+        </div>
+
+        <div class="remember-me">
+          <input type="checkbox" id="remember" />
+          <label for="remember">Remember me for 30 days</label>
+        </div>
+
+        <button type="submit" class="btn">Log In</button>
+
+        <div class="auth-links">
+          <a href="signup.html">Don't have an account? Sign up</a>
+          <a href="forgot-password.html">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Password visibility toggle
+        const passwordToggle = document.getElementById("password-toggle");
+        const passwordInput = document.getElementById("password");
+
+        passwordToggle.addEventListener("click", function () {
+          const type =
+            passwordInput.getAttribute("type") === "password"
+              ? "text"
+              : "password";
+          passwordInput.setAttribute("type", type);
+          this.classList.toggle("fa-eye");
+          this.classList.toggle("fa-eye-slash");
+        });
+
+        // Form validation
+        const form = document.getElementById("login-form");
+        const emailInput = document.getElementById("email");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          let isValid = true;
+
+          // Reset previous errors
+          const formGroups = document.querySelectorAll(".form-group");
+          formGroups.forEach((group) => group.classList.remove("error"));
+
+          // Validate email
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(emailInput.value)) {
+            document
+              .querySelector(".form-group:has(#email)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // Validate password
+          if (!passwordInput.value) {
+            document
+              .querySelector(".form-group:has(#password)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // If all validations pass
+          if (isValid) {
+            // For demo purposes, redirect to dashboard page
+            // In a real implementation, you would send to the server first
+            window.location.href = "dashboard.html";
+          }
+        });
+
+        // Real-time validation feedback
+        const inputs = [emailInput, passwordInput];
+
+        inputs.forEach((input) => {
+          input.addEventListener("input", function () {
+            const formGroup = this.closest(".form-group");
+            formGroup.classList.remove("error");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

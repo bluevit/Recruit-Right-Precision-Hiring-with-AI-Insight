@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Create your Recruit Right account to streamline your recruiting process"
+    />
+    <title>Sign Up - Recruit Right</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/signup.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="logo-container">
+        <img
+          src="/api/placeholder/60/60"
+          alt="Recruit Right Logo"
+          class="logo-img"
+        />
+        <div class="logo">Recruit Right</div>
+      </div>
+
+      <h1 class="heading">Create your account</h1>
+
+      <div class="social-buttons">
+        <button type="button" class="social-btn google">
+          <i class="fab fa-google"></i> Continue with Google
+        </button>
+        <button type="button" class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i> Continue with LinkedIn
+        </button>
+      </div>
+
+      <div class="divider">or continue with email</div>
+
+      <form id="signup-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input
+              type="text"
+              id="first-name"
+              required
+              autocomplete="given-name"
+            />
+            <div class="error-message">Please enter your first name</div>
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input
+              type="text"
+              id="last-name"
+              required
+              autocomplete="family-name"
+            />
+            <div class="error-message">Please enter your last name</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input
+            type="text"
+            id="company"
+            required
+            autocomplete="organization"
+          />
+          <div class="error-message">Please enter your company name</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Work Email</label>
+          <input type="email" id="email" required autocomplete="email" />
+          <div class="error-message">Please enter a valid email address</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            required
+            autocomplete="new-password"
+          />
+          <i class="fas fa-eye-slash password-toggle" id="password-toggle"></i>
+          <div class="error-message">
+            Password must be at least 8 characters
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            required
+            autocomplete="new-password"
+          />
+          <i
+            class="fas fa-eye-slash password-toggle"
+            id="confirm-password-toggle"
+          ></i>
+          <div class="error-message">Passwords do not match</div>
+        </div>
+
+        <div class="form-group">
+          <label>I am signing up as a:</label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="organization"
+                name="user-type"
+                value="organization"
+                required
+                checked
+              />
+              <label for="organization">
+                <i class="fas fa-building fa-fw"></i> Organization
+              </label>
+            </div>
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="candidate"
+                name="user-type"
+                value="candidate"
+              />
+              <label for="candidate">
+                <i class="fas fa-user fa-fw"></i> Candidate
+              </label>
+            </div>
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="interviewer"
+                name="user-type"
+                value="interviewer"
+              />
+              <label for="interviewer">
+                <i class="fas fa-user-tie fa-fw"></i> Interviewer
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Create Account</button>
+
+        <div class="auth-links">
+          <a href="login.html">Already have an account? Log in</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Password visibility toggle
+        const passwordToggle = document.getElementById("password-toggle");
+        const confirmPasswordToggle = document.getElementById(
+          "confirm-password-toggle"
+        );
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput =
+          document.getElementById("confirm-password");
+
+        passwordToggle.addEventListener("click", function () {
+          const type =
+            passwordInput.getAttribute("type") === "password"
+              ? "text"
+              : "password";
+          passwordInput.setAttribute("type", type);
+          this.classList.toggle("fa-eye");
+          this.classList.toggle("fa-eye-slash");
+        });
+
+        confirmPasswordToggle.addEventListener("click", function () {
+          const type =
+            confirmPasswordInput.getAttribute("type") === "password"
+              ? "text"
+              : "password";
+          confirmPasswordInput.setAttribute("type", type);
+          this.classList.toggle("fa-eye");
+          this.classList.toggle("fa-eye-slash");
+        });
+
+        // Form validation
+        const form = document.getElementById("signup-form");
+        const firstNameInput = document.getElementById("first-name");
+        const lastNameInput = document.getElementById("last-name");
+        const companyInput = document.getElementById("company");
+        const emailInput = document.getElementById("email");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          let isValid = true;
+
+          // Reset previous errors
+          const formGroups = document.querySelectorAll(".form-group");
+          formGroups.forEach((group) => group.classList.remove("error"));
+
+          // Validate first name
+          if (!firstNameInput.value.trim()) {
+            document
+              .querySelector(".form-group:has(#first-name)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // Validate last name
+          if (!lastNameInput.value.trim()) {
+            document
+              .querySelector(".form-group:has(#last-name)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // Validate company
+          if (!companyInput.value.trim()) {
+            document
+              .querySelector(".form-group:has(#company)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // Validate email
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(emailInput.value)) {
+            document
+              .querySelector(".form-group:has(#email)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // Validate password
+          if (passwordInput.value.length < 8) {
+            document
+              .querySelector(".form-group:has(#password)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // Validate password confirmation
+          if (passwordInput.value !== confirmPasswordInput.value) {
+            document
+              .querySelector(".form-group:has(#confirm-password)")
+              .classList.add("error");
+            isValid = false;
+          }
+
+          // If all validations pass
+          if (isValid) {
+            // For demo purposes, redirect to login page
+            // In a real implementation, you would submit to the server here
+            window.location.href = "login.html";
+          }
+        });
+
+        // Real-time validation feedback
+        const inputs = [
+          firstNameInput,
+          lastNameInput,
+          companyInput,
+          emailInput,
+          passwordInput,
+          confirmPasswordInput,
+        ];
+
+        inputs.forEach((input) => {
+          input.addEventListener("input", function () {
+            const formGroup = this.closest(".form-group");
+            formGroup.classList.remove("error");
+          });
+        });
+
+        // Real-time password matching
+        confirmPasswordInput.addEventListener("input", function () {
+          const formGroup = this.closest(".form-group");
+          if (this.value && this.value !== passwordInput.value) {
+            formGroup.classList.add("error");
+          } else {
+            formGroup.classList.remove("error");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
